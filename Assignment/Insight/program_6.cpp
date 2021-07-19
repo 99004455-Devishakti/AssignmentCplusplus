@@ -1,37 +1,39 @@
 #include <iostream>
 #include <fstream>
-//#include <cstdlib>
 #include <cctype>
 using namespace std;
-void countStuff(istream& in,int& chars,int& words,int& lines)
+void count(istream& in,int& cs,int& ws,int& ls)
  {
-   char cur = '\0';
+   char current = '\0';
    char last = '\0';
-   chars = words = lines = 0;
-   while (in.get(cur)) {
-      if (cur == '\n' ||
-          (cur == '\f' && last == '\r'))
-         lines++;
-      else
-        chars++;
-      if (!std::isalnum(cur) && std::isalnum(last))     
-         words++;
-      last = cur;
+   cs = ws = ls = 0;
+   while (in.get(current)) {
+      if (current == '\n' || (current == '\f' && last == '\r')){
+         ls++;
+      }
+      else{
+        cs++;
+      }
+      if (!std::isalnum(current) && std::isalnum(last)){     
+         ws++;
+      }
+      last = current;
    }
-   if (chars > 0) {               
-      if (std::isalnum(last))     
-         words++;                 
-      lines++;
+   if (cs > 0) {               
+      if (std::isalnum(last)){     
+         ws++;
+      }                 
+      ls++;
    }
 }
 int main() 
 {
-  std::ifstream ifs;
-  ifs.open("in.txt", std::ifstream::in);
-  int c, w, l;
-  countStuff(ifs, c, w, l);
-   cout << "characters are: " << c << '\n';
-   cout << "words are: " << w << '\n';
-   cout << "lines are: " << l << '\n';
-   return 0;
+  std::ifstream str;
+  str.open("in.txt", std::ifstream::in);
+  int cr, wd, ln;
+  count(str, cr, wd, ln);
+  cout << "characters: " << cr << endl;
+  cout << "words: " << wd << endl;
+  cout << "lines: " << ln << endl;
+  return 0;
 }
