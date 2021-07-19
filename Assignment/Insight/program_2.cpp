@@ -12,9 +12,9 @@ class MyString{
             return MyString(tstr);
         }
 
-        MyString operator*(int val){
+        MyString operator*(int v){
             string temp_str="";
-            for(int i=0;i<val;i++){
+            for(int i=0;i<v;i++){
                 temp_str+=str;
             }
             return MyString(temp_str);
@@ -24,9 +24,9 @@ class MyString{
             str += m_str;
         }
 
-        void operator*=(int val){
+        void operator*=(int v){
             string temp_str="";
-            for(int i=0;i<val;i++){
+            for(int i=0;i<v;i++){
                 temp_str+=str;
             }
             str=temp_str;
@@ -51,5 +51,5 @@ int main(){
    cout<<s3.str<<endl;
    cout<<s4.str<<endl;
    cout<<s5.str<<endl;
-   
+   return 0;
 }
