@@ -1,55 +1,45 @@
-#include<iostream>
-#include<cstring>
+#include<bits/stdc++.h>
 using namespace std;
 
-class MyString{
+class Customer
+{
     public:
-        string str;
-        MyString(string m_str): str(m_str) {}
-
-        MyString operator+(MyString& ref){
-            string tstr = str + ref.str;
-            return MyString(tstr);
-        }
-
-        MyString operator*(int v){
-            string temp_str="";
-            for(int i=0;i<v;i++){
-                temp_str+=str;
-            }
-            return MyString(temp_str);
-        }
-
-        void operator+=(string m_str){
-            str += m_str;
-        }
-
-        void operator*=(int v){
-            string temp_str="";
-            for(int i=0;i<v;i++){
-                temp_str+=str;
-            }
-            str=temp_str;
-        }
-
-        MyString operator+(string m_str){
-            string temp_str=str + m_str;
-            return MyString(temp_str);
-        }
+        string m_id, m_name, m_phone, m_price;
+        /* Constructors */
+        Customer() : m_id(""), m_name(""), m_phone(""), m_price(" ") {}
+        Customer(string id, string name, string phone, string price) : m_id(id), m_name(name), m_phone(phone), m_price(price) {}
+        Customer(const Customer& ref) : m_id(ref.m_id), m_name(ref.m_name),m_phone(ref.m_phone), m_price(ref.m_price) {}
 };
 
 int main(){
-   MyString s1("abcd");
-   MyString s2("xyz");
-   MyString s3 = s1 + s2;   
-   MyString s4 = s1 * 3; 
-   s3 += "hello"; 
-   s2 *= 5;       
-   MyString s5 = s1 * 2 + "hello" ; 
-   cout<<s1.str<<endl;
-   cout<<s2.str<<endl;
-   cout<<s3.str<<endl;
-   cout<<s4.str<<endl;
-   cout<<s5.str<<endl;
-   return 0;
+    fstream fptr;
+    string temp;
+    fptr.open("devi.csv", ios::in);
+    string word="";
+    Customer cus[2];
+    int index = 0;
+    getline(fptr,temp);
+    while(fptr)
+    {
+        stringstream s(temp);
+        getline(s, word, ',');
+        cus[index].m_id = word;
+        getline(s, word, ',');
+        cus[index].m_name = word;
+        getline(s, word, ',');
+        cus[index].m_phone = word;
+        getline(s, word, ',');
+        cus[index].m_price = word;
+        index++;
+        getline(fptr, temp);
+    }
+    for(int i = 0; i < 2; i++){
+        cout<<"Customer "<<index+1<<" information:"<<endl;
+        cout<<"ID is: "<<cus[i].m_id<<endl;
+        cout<<"Name is: "<<cus[i].m_name<<endl;
+        cout<<"Phone is: "<<cus[i].m_phone<<endl;
+        cout<<"Price is: "<<cus[i].m_price<<endl;
+    }
+    return 0;
 }
+
