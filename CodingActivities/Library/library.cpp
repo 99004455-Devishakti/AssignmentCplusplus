@@ -95,50 +95,21 @@ bool comparePages(Book& r1, Book& r2)
   if(r1.pages() < r2.pages())return true;
   else return false;
 }
-/*
-Book& BookDB::findBookWithMinPages() 
-{
-  //TODO, std::min_element + comparePages
-} 
 
-double BookDB::findAveragePriceByYear(int yy) {
-  //TODO, std::min_element + comparePages
-} 
-*/
+
 bool BookDB::isPriceRange(Book& ref) 
 {
   if(ref.price() < 200.00)return true;
   else return false;
 }
 
-/*
-int BookDB::countBooksInPriceRange(int pmin,int pmax) {
-  int k=std::count_if(books.begin(), books.end(), isPriceRange());
-  return k;
-}
 
-void BookDB::removeByISBN(int key) 
-{
-  //TODO, std::remove or std::remove_if
-}
-*/
 
 bool compareTitle(Book& r1, Book& r2) {
   if (r1.title() == r2.title()) return true;
   else return false;
 }
 
-/*
-void BookDB::sortBooksByTitle() 
-{
-  std::sort(books.begin(), books.end());   //operator< in Book, as per title
-  //std::sort(books.begin(), books.end(), compareTitle);
-}
-void BookDB::sortBooksByPrice() 
-{
-  std::sort(books.begin(), books.end(),comparePrice);
-}
-*/
 
 
 
